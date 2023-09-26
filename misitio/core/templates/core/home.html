@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous">
+    <link rel="styleSheet" href='{% static "css/temas.css" %}' type="text/css">
+    <title>Escuela Los Reyes</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row primero">
+        <div class="col"> <p id="blanco"> 📍 Avenida ####################### 📞
+            32 41352 12345 </p></div>
+      </div>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <img id="logo" src='{% static "img/logo_final.png" %}'
+                  height="80px">
+              </li>
+              <li class="nav-item">
+                <h1 style="margin-top:20px">Portal Escuela Los Reyes</h1>
+              </li>
+            </ul>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button class="btn btn-primary me-md-2" type="button"> <a
+                  href="/admin">Iniciar sesion</a></button>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="row tercero">
+        <div class="col comunicado"> <h2> COMUNICADOS</h2></div>
+      </div>
+      <div class="row">
+        <form class="form">
+          <div class="input-group" method="GET">
+            <select name="nivel" class="form-select"
+              aria-label="Default select example">
+              <option value>Selecciona nivel</option>
+              <option value="GEN">General</option>
+              <option value="PRE">Pre-básica</option>
+              <option value="BAS">Básica</option>
+              <option value="MED">Media</option>
+            </select>
+
+            <select name="categoria" class="form-select"
+              aria-label="Default select example">
+              <option value>Selecciona Categoria</option>
+              {% for cat in categorias %}
+              <option value= {{cat.id}}> {{cat.nombre}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">Aplicar</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="row cuarto">
+        {% if comunicados%}
+        {% for comunic in comunicados %}
+        {% if forloop.first %} <div class="row"></div>{% endif %}
+        <div class="col-4">
+          <div class="card" style="margin:5px">
+            <div class="card-body">
+              <h5 class="card-title">{{ comunic.titulo}} </h5>
+              <hr />
+              <h6 class="card-subtitle">Autor: {{comunic.usuario}}</h6>
+              <h6 class="card-subtitle">Indice: {{comunic.id}}</h6>
+              <p class="card-subtitle">Categoria: {{ comunic.fkcategoria}}</p>
+              <p class="card-subtitle">Nivel: {{ comunic.nivel}}</p>
+              <hr />
+              <p class="card-text"> {{comunic.detalle}}</p>
+              <hr />
+              <p class="card-subtitle">Fecha emitida: {{ comunic.fecha_emision}}</p>
+              <p class="card-subtitle">Ultima Modificacion: {{comunic.fecha_modificacion}}</p>
+
+            </div>
+          </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 %}</div><div class="row">{%endif%}
+        {% if forloop.last %}</div>{%endif%}
+      {% endfor %}
+      {% else %}
+      <div class="alert alert-danger"> No hay comunicados</div>
+      {% endif %}
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"></script>
+  </body>
+</html>

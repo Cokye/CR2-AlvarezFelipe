@@ -1,0 +1,71 @@
+a{
+    color: #FFFF;
+    text-decoration: none;
+}
+
+body{
+    font-family: Arial;
+}
+
+#titulo{
+    text-align: right;
+    margin-top: 20px;
+}
+
+
+#login{
+    text-align: left;
+    margin-top: 30px;
+}
+
+#blanco{
+    margin-top: 10px;
+    font-weight: bold;
+    color:aliceblue
+}
+
+#logo{
+    margin-top: 10px;
+}
+
+#logo_2{
+    margin-top: 20px;
+}
+
+.primero{
+    width:100vw ;
+    height: 50px ;
+    text-align: center;
+    background-color: #A5C1FE
+    
+}
+.segundo{
+    width: 100vw;
+    height: 100px;
+    background-color: #FFFF
+}
+
+.tercero{
+    width: 100vw;
+    height: 200px;
+    background-color: #A5C1FE
+}
+
+.cuarto{
+    width: 100vw;
+    background-color: #FFFF
+}
+
+.comunicado{
+    margin-top: 70px;
+    text-align: center;
+    font-weight: 100;
+}
+
+h2{
+    font-size: 50px
+}
+
+.sin_margen{
+    display:inline;
+}
