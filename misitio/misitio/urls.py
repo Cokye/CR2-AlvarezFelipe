@@ -21,6 +21,7 @@ from core import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home , name="home"),
-    path('login/', views.login , name="login"),
+    path('login/', views.iniciar_sesion , name="login"),
+    path('custom_logout/', views.custom_logout, name='custom_logout'),
 
 ]
