@@ -69,3 +69,10 @@ h2{
 .sin_margen{
     display:inline;
 }
+
+.centrado{
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #992e2e
+}
